@@ -11,6 +11,13 @@ export class UserService {
       where: {
         id,
       },
+      include: {
+        documents: {
+          include: {
+            author: true,
+          },
+        },
+      },
     });
   }
 }

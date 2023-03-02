@@ -11,9 +11,23 @@ datasource db {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  name  String
-  email String @unique
+  id        Int        @id @default(autoincrement())
+  name      String
+  email     String     @unique
+  documents Document[]
 
   @@map("users")
+}
+
+model Document {
+  id               Int      @id @default(autoincrement())
+  title            String
+  body             String
+  author           User     @relation(fields: [authorId], references: [id])
+  authorId         Int
+  // Defaults to NUMERIC for SQLite and timestamp(3) for Postgres
+  creation_date    DateTime @default(now())
+  last_update_date DateTime @default(now())
+
+  @@map("documents")
 }
