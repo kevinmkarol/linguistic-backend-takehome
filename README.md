@@ -21,9 +21,21 @@ For this implementation the lookup requires two queries of the database - the fi
  - Public Github Repository: Currently the coding challenge base repository is publicly available, which means this fork with my implementation is also public facing. Perhaps it's unlikely that others taking the challenge would track down existing forks, but may be worth moving the challenge to a private repository so participant forks are also forced private.
 
 
+## Running with Docker
+
+With a local docker daemon running use the following two commands to build and start the linguistic app
+
+```
+docker build -t linguistic .
+
+docker run -p80:3000 linguistic
+```
+Once the server starts up you'll be able to access the application at
+http://localhost
+
 ## Test Queries
 
-The following can be used to test graphQL once the server is running http://localhost:3000/graphql
+The following can be used to test graphQL once the server is running http://localhost/graphql
 
 query{
   user(id:8){
